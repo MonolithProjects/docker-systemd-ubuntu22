@@ -31,9 +31,10 @@ RUN	apt-get update \
 		&& rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
 		&& apt-get clean
 
+# hadolint ignore=SC2039
 RUN set -eux \
 	&& groupadd -g ${MY_GID} ${MY_GROUP} \
-	&& useradd -m -d /home/ansible -s /bin/bash -G ${MY_GROUP} -g ${MY_GID} -u ${MY_UID} ${MY_USER} \
+	&& useradd -l -m -d /home/ansible -s /bin/bash -G ${MY_GROUP} -g ${MY_GID} -u ${MY_UID} ${MY_USER} \
     && echo "%${MY_USER}        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers \
 	\
 	&& mkdir /home/ansible/.gnupg \
@@ -42,13 +43,10 @@ RUN set -eux \
 	\
 	&& mkdir /home/ansible/.ssh \
 	&& chown ansible:ansible /home/ansible/.ssh \
-	&& chmod 0700 /home/ansible/.ssh 
-
-RUN locale-gen en_US.UTF-8
-
-RUN mkdir -p /etc/ansible
-# hadolint ignore=SC2039
-RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
+	&& chmod 0700 /home/ansible/.ssh \
+  && locale-gen en_US.UTF-8 \
+  && mkdir -p /etc/ansible \
+	&& echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/sbin/init"]
