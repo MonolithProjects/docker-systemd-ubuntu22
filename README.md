@@ -1,7 +1,6 @@
 # Ubuntu22 Ansible Test Image
 
 [![GitHub Actions](https://github.com/MonolithProjects/docker-systemd-ubuntu22/workflows/Dockerfile%20test/badge.svg?branch=master)](https://github.com/MonolithProjects/docker-systemd-ubuntu22/actions)
-[![DockerHub-layers](https://img.shields.io/microbadger/layers/monolithprojects/systemd-ubuntu22)](https://hub.docker.com/repository/docker/monolithprojects/systemd-ubuntu22)
 [![DockerHub-pulls](https://img.shields.io/docker/pulls/monolithprojects/systemd-ubuntu22)](https://hub.docker.com/repository/docker/monolithprojects/systemd-ubuntu22)
 [![DockerHub](https://img.shields.io/docker/cloud/automated/monolithprojects/systemd-ubuntu22?maxAge=2592000)](https://hub.docker.com/repository/docker/monolithprojects/systemd-ubuntu22)
 
